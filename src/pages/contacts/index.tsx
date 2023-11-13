@@ -5,13 +5,19 @@ import { useDataViewMode } from '../useDataViewMode';
 import {DATA_VIEW_MODE} from '../../pages/contacts';
 import ContactsTable from './ContactsTable';
 import Loader from '../../loader/Loader';
+import {ToggleDataViewMode} from './toggleDataViewMode/index';
+
 
 function Contacts() {
-    
     const contacts = useContacts()
     const[dataViewMode, setDataViewMode] = useDataViewMode();
+  
   return (
     <Container>
+    <ToggleDataViewMode 
+    dataViewMode={dataViewMode}
+    setDataViewMode={setDataViewMode}
+    />
        {(() => {
                 if(contacts.isload){
                     return (

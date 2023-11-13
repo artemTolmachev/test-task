@@ -17,16 +17,16 @@ import { useState, useEffect } from 'react';
 //getInitialDataViewMode - Это функция, которая устанавливает начальное значение для dataViewMode (возвращаемое из localStorage или DATA_VIEW_MODE.TABLE).
 
 const getInitialDataViewMode = (): DataViewMode => {
-    const storedDataViewMode = localStorage.getItem("dataViewMode")?.toLowerCase() as DataViewMode;
+    const storedDataViewMode = localStorage.getItem("dataViewMode") as DataViewMode;
+  
     return storedDataViewMode || DATA_VIEW_MODE.TABLE;
 };
-
 
   export const useDataViewMode = (): 
   [DataViewMode, React.Dispatch<React.SetStateAction<DataViewMode>>] => {
 
     const [dataViewMode, setDataViewMode] = useState<DataViewMode>(getInitialDataViewMode);
-  
+
     //охранения dataViewMode в localStorage.
     useEffect(() => {
       localStorage.setItem("dataViewMode", dataViewMode);
