@@ -11,7 +11,7 @@ import {ToggleDataViewMode} from './toggleDataViewMode/index';
 function Contacts() {
     const contacts = useContacts()
     const[dataViewMode, setDataViewMode] = useDataViewMode();
-  
+ 
   return (
     <Container>
     <ToggleDataViewMode 

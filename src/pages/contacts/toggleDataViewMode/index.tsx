@@ -1,12 +1,12 @@
 import ToggleButton from 'react-bootstrap/ToggleButton';
 import ToggleButtonGroup from 'react-bootstrap/ToggleButtonGroup';
-import React from 'react'
+import React, {useState} from 'react'
 import { useCallback } from 'react';
 import {DATA_VIEW_MODE, DataViewMode} from '../../contacts';
 
 interface ToggleDataViewModeProps {
     dataViewMode: DataViewMode;
-    setDataViewMode: React.Dispatch<React.SetStateAction<DataViewMode>>;
+    setDataViewMode: (mode: DataViewMode) => void;
 }
 
 
@@ -14,26 +14,35 @@ interface ToggleDataViewModeProps {
 export const ToggleDataViewMode: React.FC<ToggleDataViewModeProps> = ({ dataViewMode, setDataViewMode }) => {
     
     const handleChengeViewMode = useCallback(
-        (_: any, nextView: DataViewMode) => {
+        (event: React.ChangeEvent<HTMLInputElement>, nextView: DataViewMode) => {
             console.log(nextView)
             setDataViewMode(nextView);
         },
         [setDataViewMode]
     )
+const [value, setValue] = useState([]);
+
+
+function handl(event: any) {
+    console.log(event)
+} 
+
     return (
         <>
-            <ToggleButtonGroup type="radio"
-             name="options" 
-             value={dataViewMode} 
-             onChange={handleChengeViewMode}
-             >
-                <ToggleButton id="tbg-radio-2" value={DATA_VIEW_MODE.GRID} >
+            <ToggleButtonGroup type="checkbox" value={value} onChange={handl}>
+                <ToggleButton id="tbg-btn-1" value={DATA_VIEW_MODE.GRID} >
                     Grid
                 </ToggleButton>
-                <ToggleButton id="tbg-radio-3" value={DATA_VIEW_MODE.TABLE} >
+                <ToggleButton id="tbg-btn-2" value={DATA_VIEW_MODE.TABLE}>
                     Table
                 </ToggleButton>
             </ToggleButtonGroup>
         </>
     )
   };
+
+
+
+
+
+
