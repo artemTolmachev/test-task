@@ -6,6 +6,7 @@ import {DATA_VIEW_MODE} from '../../pages/contacts';
 import ContactsTable from './ContactsTable';
 import Loader from '../../loader/Loader';
 import {ToggleDataViewMode} from './toggleDataViewMode/index';
+import ContactsGrid from './ContactsGrid/index'
 
 
 function Contacts() {
@@ -34,14 +35,14 @@ function Contacts() {
                         </>
                     )
                 }
-                if (dataViewMode === DATA_VIEW_MODE.GRID.toLowerCase()) {
+                if (dataViewMode === DATA_VIEW_MODE.GRID) {
                     return (
                         <>
-                        GRID
+                            <ContactsGrid data={contacts.data}/>
                         </>
                     )
                 }
-                if (dataViewMode === DATA_VIEW_MODE.TABLE.toLowerCase()) {
+                if (dataViewMode === DATA_VIEW_MODE.TABLE) {
                     return (
                         <>
                             <ContactsTable data={contacts.data}/>

@@ -1,5 +1,8 @@
-import ToggleButton from 'react-bootstrap/ToggleButton';
-import ToggleButtonGroup from 'react-bootstrap/ToggleButtonGroup';
+import ViewListIcon from '@mui/icons-material/ViewList';
+import ViewModuleIcon from '@mui/icons-material/ViewModule';
+import ViewQuiltIcon from '@mui/icons-material/ViewQuilt';
+import ToggleButton from '@mui/material/ToggleButton';
+import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
 import React, {useState} from 'react'
 import { useCallback } from 'react';
 import {DATA_VIEW_MODE, DataViewMode} from '../../contacts';
@@ -13,30 +16,29 @@ interface ToggleDataViewModeProps {
 
 export const ToggleDataViewMode: React.FC<ToggleDataViewModeProps> = ({ dataViewMode, setDataViewMode }) => {
     
-    const handleChengeViewMode = useCallback(
-        (event: React.ChangeEvent<HTMLInputElement>, nextView: DataViewMode) => {
-            console.log(nextView)
+    const handleChengeViewMode = useCallback (
+        (event: React.MouseEvent<HTMLElement, MouseEvent>, nextView: DataViewMode) => {
+          
             setDataViewMode(nextView);
         },
         [setDataViewMode]
     )
-const [value, setValue] = useState([]);
-
-
-function handl(event: any) {
-    console.log(event)
-} 
-
+   
     return (
         <>
-            <ToggleButtonGroup type="checkbox" value={value} onChange={handl}>
-                <ToggleButton id="tbg-btn-1" value={DATA_VIEW_MODE.GRID} >
-                    Grid
-                </ToggleButton>
-                <ToggleButton id="tbg-btn-2" value={DATA_VIEW_MODE.TABLE}>
-                    Table
-                </ToggleButton>
-            </ToggleButtonGroup>
+            <ToggleButtonGroup
+            orientation="vertical"
+            value={dataViewMode}
+            exclusive
+            onChange={handleChengeViewMode}
+>
+  <ToggleButton value={DATA_VIEW_MODE.GRID} aria-label={DATA_VIEW_MODE.GRID}>
+    <ViewListIcon />
+  </ToggleButton>
+  <ToggleButton value={DATA_VIEW_MODE.TABLE} aria-label={DATA_VIEW_MODE.TABLE}>
+    <ViewModuleIcon />
+  </ToggleButton>
+</ToggleButtonGroup>
         </>
     )
   };

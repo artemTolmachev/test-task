@@ -67,3 +67,6 @@ export  interface UseContactsReturnType {
     isload: boolean;
   }
 
+  export interface ContactsProps {
+    data: UserData[];
+  }

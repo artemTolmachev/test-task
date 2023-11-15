@@ -3,13 +3,11 @@ import { UserData } from '../../../type/data';
 import Table from 'react-bootstrap/Table';
 import Image from 'react-bootstrap/Image';
 import {NATIONALITIES_HUMAN_NAME } from '../Nationalitios';
+import {ContactsProps } from '../../../type/data'
 
 
-interface ContactsTableProps {
-  data: UserData[];
-}
 
-const ContactsTable: React.FC<ContactsTableProps> = ({ data }) => {
+const ContactsTable: React.FC<ContactsProps> = ({ data }) => {
   return (
     <Table striped bordered hover variant="dark">
     <thead>
