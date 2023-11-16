@@ -1,37 +1,55 @@
-import React from 'react'
-import { ContactsProps } from '../../../type/data';
-import Box from '@mui/material/Box';
-import Grid from '@mui/material/Grid';
+import * as React from 'react';
+import Stack from '@mui/material/Stack';
 import Paper from '@mui/material/Paper';
 import { styled } from '@mui/material/styles';
+import Grid from '@mui/material/Grid';
+import { Box } from '@mui/material';
+import {ContactsProps} from '../../../type/data';
+import Image from 'react-bootstrap/Image';
+import List from '@mui/material/List';
+import ListItem from '@mui/material/ListItem';
+import ListItemText from '@mui/material/ListItemText';
 
-const Item = styled(Paper)(({ theme }) => ({
-  backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
-  ...theme.typography.body2,
-  padding: theme.spacing(1),
+
+const DemoPaper = styled(Paper)(({ theme }) => ({
+  width: 120,
+  height: 120,
+  padding: theme.spacing(2),
   textAlign: 'center',
-  color: theme.palette.text.secondary,
+
 }));
 
 const ContactsGrid: React.FC<ContactsProps> = ({data}) => {
   return (
-    <Box sx={{ flexGrow: 1 }}>
-      <Grid container spacing={2}>
-        <Grid item xs={8}>
-          <Item>xs=8</Item>
-        </Grid>
-        <Grid item xs={4}>
-          <Item>xs=4</Item>
-        </Grid>
-        <Grid item xs={4}>
-          <Item>xs=4</Item>
-        </Grid>
-        <Grid item xs={8}>
-          <Item>xs=8</Item>
-        </Grid>
+  <Box sx={{ flexGrow: 1 }}>
+     <Grid container spacing={2}>
+      {data.map(contact => 
+     
+            <Grid item xs={3}>
+
+                <DemoPaper variant="elevation" key={contact.login.uuid}>
+                     <Image src={contact.picture.medium} rounded />
+                       
+               </DemoPaper>
+               <List>
+                  <ListItem disablePadding>
+                    <ListItemText primary={`${contact.name.first} ${contact.name.last}`}/>
+                  </ListItem>
+                  <ListItem disablePadding>
+                    <ListItemText primary={`${contact.dob.age} years`}/>
+                  </ListItem>
+                  <ListItem disablePadding>
+                    <ListItemText primary={contact.location.city} />
+                  </ListItem>
+                  <ListItem disablePadding>
+                  <ListItemText primary={contact.phone} />
+                  </ListItem>
+                </List>
       </Grid>
-    </Box>
+      )} 
+      </Grid>
+  </Box>
   )
 }
-
 export default ContactsGrid
+
