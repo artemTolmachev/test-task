@@ -25,13 +25,13 @@ const ContactsGrid: React.FC<ContactsProps> = ({data}) => {
      <Grid container spacing={2}>
       {data.map(contact => 
      
-            <Grid item xs={3}>
+            <Grid item xs={3} key={contact.login.uuid}>
 
-                <DemoPaper variant="elevation" key={contact.login.uuid}>
+                <DemoPaper variant="elevation" >
                      <Image src={contact.picture.medium} rounded />
                        
                </DemoPaper>
-               <List>
+               <List >
                   <ListItem disablePadding>
                     <ListItemText primary={`${contact.name.first} ${contact.name.last}`}/>
                   </ListItem>

@@ -40,7 +40,7 @@ export interface UserData {
     name: {
       first: string;
       last: string;
-      title: string;
+      title?: string;
     };
     nat: string;
     phone: string;
@@ -67,6 +67,14 @@ export  interface UseContactsReturnType {
     isload: boolean;
   }
 
-  export interface ContactsProps {
+export interface ContactsProps {
     data: UserData[];
   }
+
+export  interface FilterValues{
+    fullname: string;
+    gender: string;
+    nationality: string;
+}
+
+export interface UserName extends Pick<UserData, 'name'> {}

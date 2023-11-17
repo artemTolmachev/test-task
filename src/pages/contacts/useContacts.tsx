@@ -1,9 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { UserData, ApiResponse, UseContactsReturnType} from '../../type/data';
 
-
-
-
 export const useContacts = (): UseContactsReturnType =>  {
 
 
