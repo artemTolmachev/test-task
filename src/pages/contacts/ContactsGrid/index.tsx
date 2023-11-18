@@ -42,7 +42,10 @@ const ContactsGrid: React.FC<ContactsProps> = ({data}) => {
                     <ListItemText primary={contact.location.city} />
                   </ListItem>
                   <ListItem disablePadding>
-                  <ListItemText primary={contact.phone} />
+                      <ListItemText primary={contact.phone} />
+                  </ListItem>
+                  <ListItem disablePadding>
+                      <ListItemText primary={contact.email} />
                   </ListItem>
                 </List>
       </Grid>

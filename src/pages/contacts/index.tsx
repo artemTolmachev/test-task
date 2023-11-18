@@ -46,7 +46,7 @@ function Contacts() {
     const [filters, setFilters] = useState<FilterValues>(FilterDefaultValue);
 
     const setFiltersUpdate: FiltersUpdateProps = (name: any, value: any) => {
-        console.log(contacts.data)
+       
         setFilters((prev) => ({
             ...prev,
             [name]: value,

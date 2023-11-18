@@ -17,14 +17,10 @@ interface FiltersUpdateProps {
     (name: string, value: string): void;
   }
 
-
 interface ContactsFilterProps {
     filters: FilterValues;
     setFiltersUpdate: FiltersUpdateProps;
 }
-
-
-
 
  const ContactsFilter: React.FC<ContactsFilterProps> = ({filters, setFiltersUpdate}) => {
 
