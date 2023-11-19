@@ -1,6 +1,5 @@
 import React, {useState} from 'react'
 import { useContacts } from './useContacts';
-import Container from 'react-bootstrap/Container';
 import { useDataViewMode } from '../useDataViewMode';
 import {DATA_VIEW_MODE} from '../../pages/contacts';
 import ContactsTable from './ContactsTable';
@@ -10,6 +9,7 @@ import ContactsGrid from './ContactsGrid/index'
 import ContactsFilter from '../contactsFilter';
 import { FilterValues } from '../../type/data';
 import Grid from '@mui/material/Grid';
+import Box from '@mui/material/Box';
 
 
 interface FiltersUpdateProps {
@@ -46,7 +46,6 @@ function Contacts() {
     const [filters, setFilters] = useState<FilterValues>(FilterDefaultValue);
 
     const setFiltersUpdate: FiltersUpdateProps = (name: any, value: any) => {
-       
         setFilters((prev) => ({
             ...prev,
             [name]: value,
@@ -58,50 +57,62 @@ function Contacts() {
         .filter(i => FilterContactsByGender(i.gender, filters.gender))
         .filter(n => FilterContactsByNationaliety(n.nat, filters.nationality))
 
-       
-        
+    const filtersDelit = () => {
+        setFilters(FilterDefaultValue)
+    }
+
   return (
-    <Container>
-    <ToggleDataViewMode 
-    dataViewMode={dataViewMode}
-    setDataViewMode={setDataViewMode}
-    />
-      <Grid item xs={12} >
-            <ContactsFilter filters={filters} setFiltersUpdate={setFiltersUpdate}/>
-        </Grid>
+    <>
+        <Box sx={{ flexGrow: 1 }}>
+        <ToggleDataViewMode 
+                        dataViewMode={dataViewMode}
+                        setDataViewMode={setDataViewMode}
+                        />
+                    
+                   
+        <ContactsFilter filters={filters} setFiltersUpdate={setFiltersUpdate} filtersDelit={filtersDelit}/>
+  
+        </Box>
+        
+
+          
+          
        {(() => {
                 if(contacts.isload){
                     return (
-                        <>
-                        <div>load...</div>
-                            <Loader/>
-                        </>
+                        
+                            <div className='box'>
+                                <Loader/>
+                            </div>
+                        
                     )
                 }
                 if(contacts.iserror){
                     return (
-                        <>
+                        <div className='box'>
                             <div>...err</div>
-                        </>
+                        </div>
                     )
                 }
                 if (dataViewMode === DATA_VIEW_MODE.GRID) {
                     return (
-                        <>
+                        <div className='box'>
                             <ContactsGrid data={contaxtFIlter}/>
-                        </>
+                        </div>
                     )
                 }
                 if (dataViewMode === DATA_VIEW_MODE.TABLE) {
                     return (
-                        <>
+                        <div className='box'>
                             <ContactsTable data={contaxtFIlter}/>
-                        </>
+                        </div>
+                        
                     )
                 }
                 return null
                 })()}
-    </Container>
+    </>
+  
   );
 }
 

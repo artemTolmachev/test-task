@@ -6,10 +6,9 @@ import {NATIONALITIES_HUMAN_NAME } from '../Nationalitios';
 import {ContactsProps } from '../../../type/data'
 import ToCopyText from '../ToCopyText/index';
 
-
 const ContactsTable: React.FC<ContactsProps> = ({ data }) => {
   return (
-    <Table striped bordered hover variant="dark">
+    <Table responsive="md" hover >
     <thead>
       <tr>
         <th>Ava</th>

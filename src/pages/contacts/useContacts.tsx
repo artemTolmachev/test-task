@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { UserData, ApiResponse, UseContactsReturnType} from '../../type/data';
+import Loader from '../../loader/Loader';
 
 export const useContacts = (): UseContactsReturnType =>  {
 
@@ -8,11 +9,11 @@ export const useContacts = (): UseContactsReturnType =>  {
     const [iserror, setError] = useState<boolean>(false);
     const [isload, setIsload] = useState<boolean>(true);
 
+  
+
     useEffect(() => {
-        
             const  getContacts = async () => {
                 try{
-                    setIsload(false)
                     let respons = await fetch('https://randomuser.me/api/?results=10');
                     const {results, error}: ApiResponse = await respons.json()
                   
@@ -25,7 +26,12 @@ export const useContacts = (): UseContactsReturnType =>  {
                 }catch(error){
                   setError(true)
                 }finally{
-                  setIsload(false)
+                  if (isload) {
+                    const timeoutId = setTimeout(() => {
+                      setIsload(false);
+                    }, 2000);
+                    return () => clearTimeout(timeoutId); // Очищаем таймаут при размонтировании компонента
+                  }
                 }
               }
               getContacts()   

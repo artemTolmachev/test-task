@@ -1,6 +1,7 @@
+@import '../scss/main.scss';
+
 .lds-spinner {
     color: official;
-    display: inline-block;
     position: relative;
     width: 80px;
     height: 80px;
@@ -13,12 +14,12 @@
     content: "";
     display: block;
     position: absolute;
-    top: 3px;
+    top: -28px;
     left: 37px;
-    width: 6px;
-    height: 18px;
+    width: 10px;
+    height: 50px;
     border-radius: 20%;
-    background: rgb(255, 255, 255);
+    background: #9c27b0
   }
   .lds-spinner div:nth-child(1) {
     transform: rotate(0deg);
@@ -68,6 +69,7 @@
     transform: rotate(330deg);
     animation-delay: 0s;
   }
+
   @keyframes lds-spinner {
     0% {
       opacity: 1;
@@ -76,10 +78,12 @@
       opacity: 0;
     }
   }
-  
   .table{
     color: white;
   }
   .cont-loader{
-    background-color: blueviolet;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50vh;
   }
