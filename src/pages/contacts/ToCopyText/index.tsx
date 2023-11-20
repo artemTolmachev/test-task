@@ -18,7 +18,6 @@ const TITLE_BY_STATUS = {
 interface ToCopyTextProps {
     text: string ;
 }
-  
   const ToCopyText: React.FC<ToCopyTextProps> = ({ text }) =>  {
 
     const [statusCopy, setStatusCopy] = useState(STATUS_COPY.COPY);
@@ -37,9 +36,8 @@ interface ToCopyTextProps {
     return (
         <>
             <ClickAwayListener onClickAway={onClickAway}>
-                <Tooltip title={TITLE_BY_STATUS[statusCopy]} placement='top' arrow>
-                    <Button onClick={onClickCopy}>
-                    <FileCopyRoundedIcon fontSize='small' />
+                <Tooltip title={TITLE_BY_STATUS[statusCopy]} placement='top' arrow style={{color: 'gray', whiteSpace: 'normal', wordBreak: 'break-all'}}>
+                    <Button onClick={onClickCopy} >
                     {text}
                     </Button>
                 </Tooltip>

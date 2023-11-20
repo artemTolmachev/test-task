@@ -39,8 +39,8 @@ const ContactsFilter: React.FC<ContactsFilterProps> = ({ filters, setFiltersUpda
   };
 
   return (
-    <Grid container spacing={2}>
-        <Grid >
+    <Grid container spacing={2} >
+        <Grid item desktop={3} laptop={2} tablet={8} mobile={12}>
         <Form.Control
           placeholder=" Fullname"
           aria-label="Fullname"
@@ -52,14 +52,13 @@ const ContactsFilter: React.FC<ContactsFilterProps> = ({ filters, setFiltersUpda
           style={{ lineHeight: '2.7' }}
         />
         </Grid>
-        <Grid >
+        <Grid item desktop={3} laptop={2} tablet={8} mobile={12}>
         <FloatingLabel controlId="floatingSelect" label="Gender">
           <Form.Select 
           id="gender"
           name="gender"
           value={filters.gender}
           onChange={handleChangeFilter}
-        
         >
           <option value="all">All</option>
           <option value="male">Male</option>
@@ -67,7 +66,7 @@ const ContactsFilter: React.FC<ContactsFilterProps> = ({ filters, setFiltersUpda
         </Form.Select>
         </FloatingLabel>
         </Grid>
-        <Grid >
+        <Grid item desktop={3} laptop={2} tablet={8} mobile={12}>
         <FloatingLabel controlId="floatingSelect" label="nationality">
           <Form.Select 
             aria-label="nationality"
@@ -85,7 +84,7 @@ const ContactsFilter: React.FC<ContactsFilterProps> = ({ filters, setFiltersUpda
           </Form.Select>
       </FloatingLabel>
         </Grid>
-        <Grid >
+        <Grid item desktop={3} laptop={2} tablet={8} mobile={12}>
           <CustomizedButtons filtersDelit={filtersDelit}/>
         </Grid>
       </Grid>

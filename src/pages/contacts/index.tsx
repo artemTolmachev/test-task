@@ -62,57 +62,49 @@ function Contacts() {
     }
 
   return (
-    <>
-        <Box sx={{ flexGrow: 1 }}>
-        <ToggleDataViewMode 
-                        dataViewMode={dataViewMode}
-                        setDataViewMode={setDataViewMode}
-                        />
-                    
-                   
-        <ContactsFilter filters={filters} setFiltersUpdate={setFiltersUpdate} filtersDelit={filtersDelit}/>
-  
-        </Box>
-        
-
-          
-          
-       {(() => {
+    <div>
+        <Grid style={{padding:'30px', backgroundColor:'#8080807a'}}>
+            <div>
+                <ToggleDataViewMode 
+                            dataViewMode={dataViewMode}
+                            setDataViewMode={setDataViewMode}
+                            />
+                </div>
+            <div style={{marginTop: '20px'}}>
+                <ContactsFilter filters={filters} setFiltersUpdate={setFiltersUpdate} filtersDelit={filtersDelit}/>
+            </div>
+        </Grid>
+        {(() => {
                 if(contacts.isload){
                     return (
-                        
-                            <div className='box'>
-                                <Loader/>
-                            </div>
-                        
+                        <Loader/>
                     )
                 }
                 if(contacts.iserror){
                     return (
-                        <div className='box'>
-                            <div>...err</div>
-                        </div>
+                        <div>...err</div>
                     )
                 }
                 if (dataViewMode === DATA_VIEW_MODE.GRID) {
                     return (
-                        <div className='box'>
+                        <div>
                             <ContactsGrid data={contaxtFIlter}/>
-                        </div>
-                    )
-                }
-                if (dataViewMode === DATA_VIEW_MODE.TABLE) {
-                    return (
-                        <div className='box'>
-                            <ContactsTable data={contaxtFIlter}/>
                         </div>
                         
                     )
                 }
+                if (dataViewMode === DATA_VIEW_MODE.TABLE) {
+
+                    return (
+                        <div>
+                            <ContactsTable data={contaxtFIlter}/>
+                        </div>
+                      
+                    )
+                }
                 return null
                 })()}
-    </>
-  
+  </div>
   );
 }
 

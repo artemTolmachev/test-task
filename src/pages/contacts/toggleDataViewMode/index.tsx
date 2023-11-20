@@ -7,31 +7,7 @@ import {DATA_VIEW_MODE, DataViewMode} from '../../contacts';
 import Grid from '@mui/material/Grid';
 import '../../contactsFilter/ContactsFilter.scss';
 
-// import { ThemeProvider, createTheme } from '@mui/material';
 
-// declare module '@mui/material/styles' {
-//   interface BreakpointOverrides {
-//     xs: false; // removes the `xs` breakpoint
-//     sm: false;
-//     md: false;
-//     lg: false;
-//     xl: false;
-//     mobile: true; // adds the `mobile` breakpoint
-//     tablet: true;
-//     laptop: true;
-//     desktop: true;
-//   }
-// }
-// const theme = createTheme({
-//   breakpoints: {
-//     values: {
-//       mobile: 0,
-//       tablet: 640,
-//       laptop: 1024,
-//       desktop: 1200,
-//     },
-//   },
-// });
 
 interface ToggleDataViewModeProps {
     dataViewMode: DataViewMode;
@@ -49,21 +25,28 @@ export const ToggleDataViewMode: React.FC<ToggleDataViewModeProps> = ({ dataView
     )
 
     return (
-      <Grid>
-          <ToggleButtonGroup
-          fullWidth={true}
-          value={dataViewMode}
-          exclusive
-          onChange={handleChengeViewMode}
-          >
-          <ToggleButton value={DATA_VIEW_MODE.GRID} aria-label={DATA_VIEW_MODE.GRID} style={{ backgroundColor: 'white' }}>
-            <ViewListIcon />
-          </ToggleButton>
-          <ToggleButton value={DATA_VIEW_MODE.TABLE} aria-label={DATA_VIEW_MODE.TABLE} style={{ backgroundColor: '#89dca1' }}>
-            <ViewModuleIcon />
-          </ToggleButton>
-        </ToggleButtonGroup>
-        </Grid>
+      <Grid container>
+  <Grid desktop={12} laptop={8} tablet={8} mobile={12}>
+        <ToggleButtonGroup
+                  fullWidth={true}
+                  value={dataViewMode}
+                  exclusive
+                  onChange={handleChengeViewMode}
+                  >
+            
+                  <ToggleButton value={DATA_VIEW_MODE.GRID} aria-label={DATA_VIEW_MODE.GRID} style={{ backgroundColor: 'white' }}>
+                    <ViewListIcon />
+                  </ToggleButton>
+              
+                  
+                    <ToggleButton value={DATA_VIEW_MODE.TABLE} aria-label={DATA_VIEW_MODE.TABLE} style={{ backgroundColor: '#89dca1' }}>
+                      <ViewModuleIcon />
+                    </ToggleButton>
+            
+                </ToggleButtonGroup>
+      </Grid>
+      </Grid>
+    
     )
   };
 
